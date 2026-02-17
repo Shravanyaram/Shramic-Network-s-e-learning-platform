@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elearning-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: elearning-frontend
+  template:
+    metadata:
+      labels:
+        app: elearning-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: elearning-frontend
+          ports:
+            - containerPort: 80
