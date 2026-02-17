@@ -1,0 +1,26 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Backend
+        run: docker build -t elearning-backend -f docker/backend.Dockerfile .
+
+      - name: Build Frontend
+        run: docker build -t elearning-frontend -f docker/frontend.Dockerfile .
+
+      - name: Run Tests
+        run: echo "Add test commands here"
+
+      - name: Deployment Step
+        run: echo "Deploy logic goes here"
